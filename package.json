@@ -14,13 +14,9 @@
   "overrides": {
     "prosemirror-inputrules": "1.5.1"
   },
-  "resolutions": {
-    "prosemirror-inputrules": "1.5.1"
-  },
   "dependencies": {
     "@tabler/icons-react": "^3.52.0",
     "@toast-ui/editor": "^3.2.3",
-    "prosemirror-inputrules": "1.5.1",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "sweetalert2": "^11.26.25"
