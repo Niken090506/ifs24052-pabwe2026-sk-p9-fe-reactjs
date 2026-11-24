@@ -49,6 +49,7 @@ export default function AuthForm({ mode, onSuccess, withLinks = true }) {
         </label>
         <input
           id={isLogin ? 'login-username' : 'register-username'}
+          name="username"
           type="text"
           autoComplete="username"
           value={username.value}
@@ -63,6 +64,7 @@ export default function AuthForm({ mode, onSuccess, withLinks = true }) {
           </label>
           <input
             id="register-email"
+            name="email"
             type="email"
             autoComplete="email"
             value={email.value}
@@ -77,6 +79,7 @@ export default function AuthForm({ mode, onSuccess, withLinks = true }) {
         </label>
         <input
           id={isLogin ? 'login-password' : 'register-password'}
+          name="password"
           type="password"
           autoComplete={isLogin ? 'current-password' : 'new-password'}
           value={password.value}

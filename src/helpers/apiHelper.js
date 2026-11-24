@@ -1,4 +1,15 @@
-export const API_BASE = import.meta.env.VITE_API_BASE_URL || ''
+function resolveApiBase(envBase, hostname) {
+  if (envBase) return envBase.replace(/\/+$/, '')
+  if (hostname.includes('-fe-reactjs.')) {
+    return `https://${hostname.replace('-fe-reactjs.', '-be-golang-gin.')}`
+  }
+  return ''
+}
+
+export const API_BASE = resolveApiBase(
+  import.meta.env.VITE_API_BASE_URL,
+  window.location.hostname,
+)
 
 const TOKEN_KEY = 'delcom_blog_token'
 export const AUTH_EXPIRED_EVENT = 'auth:expired'
@@ -66,3 +77,5 @@ export const itemOf = (json, key) => {
   if (data && key && data[key] !== undefined) return data[key]
   return data
 }
+
+export { resolveApiBase }

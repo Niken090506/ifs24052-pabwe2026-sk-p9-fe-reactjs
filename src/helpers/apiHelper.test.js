@@ -7,6 +7,7 @@ import {
   getToken,
   itemOf,
   listOf,
+  resolveApiBase,
   setToken,
 } from './apiHelper'
 
@@ -28,16 +29,13 @@ describe('apiHelper', () => {
     expect(getToken()).toBeNull()
   })
 
-  it('API_BASE kosong secara default', () => {
+  it('API_BASE kosong secara default & resolveApiBase mendeteksi domain cloud', () => {
     expect(API_BASE).toBe('')
-  })
-
-  it('memakai VITE_API_BASE_URL bila diset', async () => {
-    vi.stubEnv('VITE_API_BASE_URL', 'https://api.test')
-    vi.resetModules()
-    const mod = await import('./apiHelper')
-    expect(mod.API_BASE).toBe('https://api.test')
-    vi.unstubAllEnvs()
+    expect(resolveApiBase('https://api.test/', 'localhost')).toBe('https://api.test')
+    expect(resolveApiBase('', 'ifs24052-pabwe2026-sk-p9-fe-reactjs.s1if.cloud')).toBe(
+      'https://ifs24052-pabwe2026-sk-p9-be-golang-gin.s1if.cloud',
+    )
+    expect(resolveApiBase('', 'localhost')).toBe('')
   })
 
   it('GET sukses tanpa token & tanpa body', async () => {
