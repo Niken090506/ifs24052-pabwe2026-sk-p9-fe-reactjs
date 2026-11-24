@@ -1,7 +1,10 @@
 function resolveApiBase(envBase, hostname) {
   if (envBase) return envBase.replace(/\/+$/, '')
   if (hostname.includes('-fe-reactjs.')) {
-    return `https://${hostname.replace('-fe-reactjs.', '-be-golang-gin.')}`
+    const beHost = hostname
+      .replace('-fe-reactjs.', '-be-golang-gin.')
+      .replace(/\.vercel\.app$/, '.s1if.cloud')
+    return `https://${beHost}`
   }
   return ''
 }

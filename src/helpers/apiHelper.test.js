@@ -35,6 +35,9 @@ describe('apiHelper', () => {
     expect(resolveApiBase('', 'ifs24052-pabwe2026-sk-p9-fe-reactjs.s1if.cloud')).toBe(
       'https://ifs24052-pabwe2026-sk-p9-be-golang-gin.s1if.cloud',
     )
+    expect(resolveApiBase('', 'ifs24052-pabwe2026-sk-p9-fe-reactjs.vercel.app')).toBe(
+      'https://ifs24052-pabwe2026-sk-p9-be-golang-gin.s1if.cloud',
+    )
     expect(resolveApiBase('', 'localhost')).toBe('')
   })
 
